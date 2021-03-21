@@ -5,12 +5,17 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
   </head>
 
   <body>
+    <h1>Chat using Pusher</h1>
+    <div>
+      <%= link_to 'homeに戻る', root_path %>
+      <%= link_to '違うユーザーでログインする', sign_in_path %>
+      <%= link_to 'ログアウトする', sign_out_path %>
+    </div>
     <%= yield %>
   </body>
 </html>

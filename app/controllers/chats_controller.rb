@@ -4,6 +4,7 @@ class ChatsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @pusher_key = ENV['PUSHER_KEY']
     @user = current_user
     @received_user = User.find(params[:with_user_id])
     @chat = Chat.new(user: @user, received_user: @received_user)

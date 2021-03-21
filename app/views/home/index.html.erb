@@ -1,0 +1,28 @@
+<div>
+  <h1>
+    <span>あなたは</span>
+    <span>id = <%= @user.id %> の <%= @user.name %></span>
+    <span>です</span>
+  </h1>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>チャットルーム</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @received_users.each do |received_user| %>
+    <tr>
+      <td>
+        <div>
+            <span>
+              <%= link_to "#{received_user.name}さんとのチャットルーム", chats_path(with_user_id: received_user.id) %>
+            </span>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,64 @@
+<div>
+  <h1>
+    <span>あなたは</span>
+    <span>id = <%= @user.id %> の <%= @user.name %></span>
+    <span>です</span>
+  </h1>
+</div>
+<div>
+  <h2>
+    <span>id = <%= @received_user.id %> の <%= @received_user.name %></span>
+    <span>さんとのchatルームです</span>
+  </h2>
+</div>
+
+<div id="post_section">
+  <% @chats.each do |chat| %>
+    <div>
+      <span>「送信者」id=<%= chat.user.id %> の <%= chat.user.name %></span>
+      <span>「送信日時」<%= chat.created_at %></span>
+      <span>「メッセージ」<%= chat.message %></span>
+    </div>
+  <% end %>
+</div>
+
+<div>
+  <%= form_with model: @chat, url: chats_path(with_user_id: @received_user.id), local: false, remote: true, id: 'chat-form' do |f| %>
+    <%= f.text_field :message, autocomplete: 'off' %>
+  <% end %>
+</div>
+
+<script>
+    // debug用途。Productionでは下記は削除する
+    Pusher.logToConsole = true;
+
+    let pusher = new Pusher('740c9cda57f8f6c66b27', {
+        authEndpoint: '/pusher/auth?auth_user_id=<%= @user.id %>',
+        cluster: 'ap3',
+        encrypted: true,
+        auth: {
+            headers: {
+                'X-CSRF-Token': "<%= form_authenticity_token %>"
+            }
+        }
+    });
+    let channel = pusher.subscribe("<%= @private_channel_name %>");
+    channel.bind("<%= @event_name %>", function (data) {
+        let chat_message = data.message;
+        let chat_created_at = data.created_at;
+        let chat_user_name = data.user_name;
+        let chat_user_id = data.user_id;
+        let new_content = document.createElement('div');
+        new_content.innerHTML = `
+  <div>
+    <span>「送信者」id=${chat_user_id} の ${chat_user_name}</span>
+    <span>「送信日時」${chat_created_at}</span>
+    <span>「メッセージ」${chat_message}</span>
+  </div>
+`
+        let post_section_div = document.getElementById('post_section');
+        post_section_div.appendChild(new_content);
+        let post_input = document.getElementById('chat_message');
+        post_input.value = '';
+    });
+</script>

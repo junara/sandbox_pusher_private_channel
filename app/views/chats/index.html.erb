@@ -32,8 +32,8 @@
     // debug用途。Productionでは下記は削除する
     Pusher.logToConsole = true;
 
-    let pusher = new Pusher('740c9cda57f8f6c66b27', {
-        authEndpoint: '/pusher/auth?auth_user_id=<%= @user.id %>',
+    let pusher = new Pusher('<%= @pusher_key %>', {
+        authEndpoint: '/pusher/auth',
         cluster: 'ap3',
         encrypted: true,
         auth: {

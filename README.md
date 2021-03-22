@@ -1,24 +1,43 @@
 # README
+PUSHERとRailsを使ってチャットを作ります。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+PUSHERはprivateチャネルをsubscribeしています。
 
-Things you may want to cover:
+## SETUP
+### PUSHER準備
+1. PUSHERのアカウントを作成
 
-* Ruby version
+https://pusher.com/
 
-* System dependencies
+2. PUSHERの App keysで情報を入寮
 
-* Configuration
+`.env_sample.env` ファイルを `.env` ファイルにコピーする
 
-* Database creation
+PUSHERのApp keys の情報を入力する
 
-* Database initialization
+### Rails準備
 
-* How to run the test suite
+migrationする
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+rails db:migrate
+```
 
-* Deployment instructions
+seedを実行する
 
-* ...
+```console
+rails db:seed
+```
+
+### Rails起動
+
+```
+rails s
+```
+
+### チャットしてみる
+動画を参考に、下記を別ウィンドウでそれぞれログインしてチャットしてみてください。
+![Kapture 2021-03-21 at 18 12 13](https://user-images.githubusercontent.com/17272426/111941671-e2772d00-8b14-11eb-9a39-6646e581af69.gif)
+
+
+

@@ -3,6 +3,10 @@ PUSHERとRailsを使ってチャットを作ります。
 
 PUSHERはprivateチャネルをsubscribeしています。
 
+## チャットイメージ
+![Kapture 2021-03-21 at 18 12 13](https://user-images.githubusercontent.com/17272426/111941671-e2772d00-8b14-11eb-9a39-6646e581af69.gif)
+
+
 ## SETUP
 ### PUSHER準備
 1. PUSHERのアカウントを作成
@@ -36,8 +40,5 @@ rails s
 ```
 
 ### チャットしてみる
-動画を参考に、下記を別ウィンドウでそれぞれログインしてチャットしてみてください。
-![Kapture 2021-03-21 at 18 12 13](https://user-images.githubusercontent.com/17272426/111941671-e2772d00-8b14-11eb-9a39-6646e581af69.gif)
-
-
+冒頭の動画を参考に、下記を別ウィンドウでそれぞれログインしてチャットしてみてください。
 

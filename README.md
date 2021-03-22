@@ -13,11 +13,13 @@ PUSHERはprivateチャネルをsubscribeしています。
 
 https://pusher.com/
 
-2. PUSHERの App keysで情報を入寮
+2. PUSHERの App keysで情報を入手
 
 `.env_sample.env` ファイルを `.env` ファイルにコピーする
 
 PUSHERのApp keys の情報を入力する
+![image](https://user-images.githubusercontent.com/17272426/111941800-3550e480-8b15-11eb-97a1-8c4a99b583ff.png)
+
 
 ### Rails準備
 
